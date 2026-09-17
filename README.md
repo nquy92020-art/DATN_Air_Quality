@@ -62,6 +62,18 @@ Hệ thống có khả năng điều khiển các thiết bị điện tự đ�
 - data_config.h: dữ liệu và thông số cấu hình.
 - icon.h: dữ liệu biểu tượng hiển thị trên OLED.
 - index_html.h: giao diện web cấu hình ESP32.
+  ## Hình ảnh chi tiết
+
+### Mạch điều khiển
+
+<img src="images/mạch.jpg" alt="Mạch điều khiển ESP32 và relay" width="650">
+
+### Giao diện giám sát trên Blynk
+
+<img src="images/blynk_dashboard.png" alt="Giao diện giám sát trên Blynk" width="800">
+
+[Xem toàn bộ hình ảnh dự án](images/)
+
 ## Tác giả
 
 Ngô Văn Quý
