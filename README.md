@@ -1,6 +1,10 @@
 # Hệ thống giám sát và kiểm soát chất lượng không khí trong nhà
 Đồ án xây dựng một hệ thống sử dụng ESP32 để giám sát nhiệt độ, độ ẩm và chất lượng không khí trong nhà. Dữ liệu được hiển thị trên màn hình OLED và gửi lên nền tảng Blynk thông qua Wi-Fi.
 Hệ thống có khả năng điều khiển các thiết bị điện tự động theo ngưỡng cài đặt hoặc điều khiển thủ công bằng nút nhấn và Blynk.
+## Hình ảnh mô hình
+
+<img src="images/Mô hình hoàn chỉnh.jpg" alt="Mô hình hoàn chỉnh" width="450">
+
 ## Chức năng chính
 - Đo nhiệt độ và độ ẩm bằng cảm biến DHT11.
 - Đo bụi bằng cảm biến GP2Y1010AU0F.
