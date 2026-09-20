@@ -1,21 +1,28 @@
 # Hệ thống giám sát và kiểm soát chất lượng không khí trong nhà
-Đồ án xây dựng một hệ thống sử dụng ESP32 để giám sát nhiệt độ, độ ẩm và chất lượng không khí trong nhà. Dữ liệu được hiển thị trên màn hình OLED và gửi lên nền tảng Blynk thông qua Wi-Fi.
-Hệ thống có khả năng điều khiển các thiết bị điện tự động theo ngưỡng cài đặt hoặc điều khiển thủ công bằng nút nhấn và Blynk.
+
+Đồ án xây dựng hệ thống sử dụng ESP32 để giám sát nhiệt độ, độ ẩm và chất lượng không khí trong nhà. Dữ liệu được hiển thị trực tiếp trên màn hình OLED và gửi lên nền tảng Blynk thông qua kết nối Wi-Fi.
+
+Hệ thống hỗ trợ điều khiển các thiết bị điện theo hai chế độ: tự động dựa trên ngưỡng cài đặt và điều khiển thủ công bằng nút nhấn hoặc thông qua Blynk.
+
 ## Hình ảnh mô hình
 
-<img src="images/Mô hình hoàn chỉnh.jpg" alt="Mô hình hoàn chỉnh" width="450">
+<img src="images/hardware/mo-hinh-hoan-chinh.jpg" alt="Mô hình hoàn chỉnh" width="450">
 
 ## Chức năng chính
+
 - Đo nhiệt độ và độ ẩm bằng cảm biến DHT11.
 - Đo bụi bằng cảm biến GP2Y1010AU0F.
-- Hiển thị dữ liệu trên màn hình OLED.
-- Gửi dữ liệu lên Blynk qua Wi-Fi.
+- Hiển thị thông số trên màn hình OLED.
+- Gửi dữ liệu lên nền tảng Blynk thông qua Wi-Fi.
 - Điều khiển 5 kênh relay.
-- Hỗ trợ chế độ tự động và điều khiển thủ công.
-- Cấu hình Wi-Fi, Blynk và các ngưỡng điều khiển thông qua giao diện web.
+- Hỗ trợ chế độ điều khiển tự động và thủ công.
+- Điều khiển thủ công bằng nút nhấn hoặc Blynk.
+- Cấu hình Wi-Fi, Blynk và các ngưỡng điều khiển thông qua giao diện Web.
 - Lưu thông tin cấu hình bằng EEPROM.
 - Sử dụng các task FreeRTOS để xử lý cảm biến, hiển thị, mạng và điều khiển.
+
 ## Phần cứng
+
 | Thành phần | Mô tả |
 |---|---|
 | Vi điều khiển | ESP32 ESP-WROOM-32S |
@@ -24,8 +31,25 @@ Hệ thống có khả năng điều khiển các thiết bị điện tự đ�
 | Màn hình | OLED 1.3 inch, 128×64, giao tiếp I2C |
 | Bộ điều khiển | Relay 5V, 5 kênh |
 | Nút nhấn | 5 nút nhấn cơ học |
+| Kết nối | Wi-Fi |
 | Nền tảng IoT | Blynk IoT |
+
+## Sơ đồ hệ thống
+
+### Sơ đồ khối tổng quan
+
+<img src="images/diagrams/so-do-khoi-tong-quan.png" alt="Sơ đồ khối tổng quan của hệ thống" width="650">
+
+### Sơ đồ khối chi tiết
+
+<img src="images/diagrams/so-do-khoi-chi-tiet.png" alt="Sơ đồ khối chi tiết của hệ thống" width="650">
+
+### Lưu đồ hoạt động chương trình
+
+<img src="images/diagrams/luu-do-thuat-toan.png" alt="Lưu đồ hoạt động của chương trình" width="650">
+
 ## Sơ đồ chân kết nối
+
 | Thiết bị | Chân ESP32 |
 |---|---|
 | DHT11 | GPIO 18 |
@@ -35,14 +59,21 @@ Hệ thống có khả năng điều khiển các thiết bị điện tự đ�
 | OLED - SCL | GPIO 22 |
 | Relay 1 đến Relay 5 | GPIO 25, 26, 27, 14, 13 |
 | Nút nhấn 1 đến nút nhấn 5 | GPIO 33, 32, 35, 34, 39 |
+
 ## Phần mềm sử dụng
+
 - Arduino IDE 2.3.10
 - Ngôn ngữ C/C++
 - ESP32 Arduino Core
 - FreeRTOS
-- Wi-Fi và Blynk IoT
-- AP Mode, WebServer và EEPROM
+- Wi-Fi
+- Blynk IoT
+- AP Mode
+- WebServer
+- EEPROM
+
 ## Thư viện cần thiết
+
 - Blynk
 - DHT sensor library
 - Adafruit GFX Library
@@ -50,32 +81,20 @@ Hệ thống có khả năng điều khiển các thiết bị điện tự đ�
 - AsyncTCP
 - ESPAsyncWebServer
 - Arduino_JSON
-## Cách sử dụng
-1. Cài Arduino IDE 2.3.10 và ESP32 Board Package.
-2. Cài đặt các thư viện cần thiết.
-3. Mở `code_DATN.ino`, đặt các file `.h` cùng thư mục.
-4. Chọn board ESP32 và đúng cổng COM.
-5. Kết nối ESP32 bằng USB và nạp chương trình.
-6. Cấu hình Wi-Fi, Blynk và ngưỡng điều khiển trên giao diện Web.
+
 ## Cấu trúc mã nguồn
-- code_DATN.ino: chương trình chính.
-- data_config.h: dữ liệu và thông số cấu hình.
-- icon.h: dữ liệu biểu tượng hiển thị trên OLED.
-- index_html.h: giao diện web cấu hình ESP32.
-  ## Hình ảnh chi tiết
 
-### Mạch điều khiển
+Mã nguồn chương trình được lưu trong thư mục `firmware/`.
 
-<img src="images/mạch.jpg" alt="Mạch điều khiển ESP32 và relay" width="650">
-
-### Giao diện giám sát trên Blynk
-
-<img src="images/blynk_dashboard.png" alt="Giao diện giám sát trên Blynk" width="800">
-
-[Xem toàn bộ hình ảnh dự án](images/)
-
+```text
+firmware/
+├── code_DATN.ino
+├── data_config.h
+├── icon.h
+└── index_html.h
+```
 ## Tác giả
 
-Ngô Văn Quý
+**Ngô Văn Quý**
 
-Đồ án tốt nghiệp ngành Kỹ thuật máy tính.
+Đồ án tốt nghiệp ngành **Kỹ thuật máy tính**.
