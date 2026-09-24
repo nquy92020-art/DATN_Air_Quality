@@ -97,4 +97,4 @@ firmware/
 
 **Ngô Văn Quý**
 
-Đồ án tốt nghiệp ngành **Kỹ thuật máy tính**.
+Đồ án tốt nghiệp ngành **Công Nghệ Kỹ Thuật Máy Tính**.
